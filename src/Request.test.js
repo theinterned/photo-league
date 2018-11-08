@@ -3,11 +3,11 @@ import {shallow, mount} from 'enzyme';
 import Request from './Request';
 
 describe('Request', () => {
-  let renderFunction;
+  const renderFunction = jest.fn();
 
   beforeEach(() => {
     fetch.resetMocks();
-    renderFunction = jest.fn();
+    renderFunction.mockReset();
   })
 
   it('passes loading, error and data props to children', () => {
@@ -60,6 +60,19 @@ describe('Request', () => {
     expect(fetch.mock.calls.length).toBe(1);
     expect(fetch.mock.calls[0][0]).toEqual(url);
   });
+
+  it('refetches when props.url changes', () => {
+    const url = "https://league.test";
+    const url2 = "https://theinterned.net";
+    const wrapper = mount(
+      <Request url={url} />
+    );
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0][0]).toEqual(url);
+    wrapper.setProps({ url: url2 });
+    expect(fetch.mock.calls.length).toBe(2);
+    expect(fetch.mock.calls[1][0]).toEqual(url2);
+  })
 
   it('handles case when children is empty or not a function', () => {
     expect(() => mount(

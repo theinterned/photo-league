@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default class Request extends Component {
   constructor(props) {
     super(props);
+    this.fetch = this.fetch.bind(this);
     this.state = {
       data: undefined,
       error: false,
@@ -11,7 +12,7 @@ export default class Request extends Component {
     }
   }
 
-  async componentDidMount() {
+  async fetch() {
     const {url} = this.props;
     try {
       const response = await fetch(url);
@@ -19,6 +20,17 @@ export default class Request extends Component {
       this.setState({data, error: false, loading: false});
     } catch (error) {
       this.setState({data: undefined, error, loading: false,})
+    }
+  }
+
+  componentDidMount() {
+    return this.fetch();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {url} = this.props;
+    if(url !== prevProps.url) {
+      return this.fetch();
     }
   }
 
