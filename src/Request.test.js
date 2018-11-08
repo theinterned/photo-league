@@ -3,16 +3,14 @@ import {shallow, mount} from 'enzyme';
 import Request from './Request';
 
 describe('Request', () => {
+  let renderFunction;
+
   beforeEach(() => {
     fetch.resetMocks();
+    renderFunction = jest.fn();
   })
 
-  it('is defined', () => {
-    expect(Request).toBeDefined();
-  });
-
   it('passes loading, error and data props to children', () => {
-    const renderFunction = jest.fn()
     shallow(
       <Request>{renderFunction}</Request>
     );
@@ -23,12 +21,10 @@ describe('Request', () => {
   it('Updates with data on a successful request', async() => {
     fetch.mockResponse(JSON.stringify('data'));
 
-    const renderFunction = jest.fn();
-
     const wrapper = mount(
       <Request>{renderFunction}</Request>
     );
-    
+
     // note this calls componentDidMount twice
     await wrapper
       .instance()
