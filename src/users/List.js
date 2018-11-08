@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "@reach/router"
 
-const Item = ({name, id}) => <li>{name}</li>;
+const userAlbumsUrl = userId => `users/${userId}/albums`;
+
+const Item = ({name, id}) => <li><Link to={userAlbumsUrl(id)}>{name}</Link></li>;
 
 Item.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired
 };
 
