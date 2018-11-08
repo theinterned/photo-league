@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const List = ({users}) => <ul>{users.map(({id, name}) => <li key={`user_${id}`}>{name}</li>)}</ul>;
+const Item = ({name, id}) => <li>{name}</li>;
+
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};
+
+const List = ({users}) => <ul>{users.map(({id, name}) => <Item name={name} id={id} key={`user_${id}`}/>)}</ul>;
 
 List.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({id: PropTypes.string.isRequired, name: PropTypes.string.isRequired}))
+  users: PropTypes.arrayOf(PropTypes.shape(Item.propTypes))
 };
 
 export default List;
