@@ -31,7 +31,7 @@ export default class Request extends Component {
   }
 }
 
-Request.PropTypes = {
+Request.propTypes = {
   children: PropTypes.func,
   url: PropTypes.string.isRequired,
 }

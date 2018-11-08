@@ -22,7 +22,7 @@ describe('Request', () => {
     fetch.mockResponse(JSON.stringify('data'));
 
     const wrapper = mount(
-      <Request>{renderFunction}</Request>
+      <Request url="foo">{renderFunction}</Request>
     );
 
     // note this calls componentDidMount twice
@@ -39,7 +39,7 @@ describe('Request', () => {
     const error = new Error('fake error message');
     fetch.mockReject(error);
     const wrapper = mount(
-      <Request>{renderFunction}</Request>
+      <Request url="foo">{renderFunction}</Request>
     );
 
     // note this calls componentDidMount twice
