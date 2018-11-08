@@ -3,6 +3,10 @@ import {shallow, mount} from 'enzyme';
 import Request from './Request';
 
 describe('Request', () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  })
+
   it('is defined', () => {
     expect(Request).toBeDefined();
   });
@@ -17,12 +21,7 @@ describe('Request', () => {
   });
 
   it('Updates with data on a successful request', async() => {
-    global.fetch = jest
-      .fn()
-      .mockImplementation(() => new Promise((resolve, reject) => resolve({
-        ok: true,
-        json: () => 'data'
-      })));
+    fetch.mockResponse(JSON.stringify('data'));
 
     const renderFunction = jest.fn();
 
@@ -38,6 +37,7 @@ describe('Request', () => {
     expect(renderFunction.mock.calls.length).toBe(3)
     expect(renderFunction.mock.calls[1][0]).toEqual({loading: false, error: false, data: 'data'});
     expect(renderFunction.mock.calls[2][0]).toEqual(renderFunction.mock.calls[1][0]);
-
   });
+
+  it('handles rejected promises', () => {});
 })
