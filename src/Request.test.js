@@ -35,5 +35,20 @@ describe('Request', () => {
     expect(renderFunction.mock.calls[2][0]).toEqual(renderFunction.mock.calls[1][0]);
   });
 
-  it('handles rejected promises', () => {});
+  it('handles rejected promises', async() => {
+    const error = new Error('fake error message');
+    fetch.mockReject(error);
+    const wrapper = mount(
+      <Request>{renderFunction}</Request>
+    );
+
+    // note this calls componentDidMount twice
+    await wrapper
+      .instance()
+      .componentDidMount();
+
+    expect(renderFunction.mock.calls.length).toBe(3)
+    expect(renderFunction.mock.calls[1][0]).toEqual({loading: false, error, data: undefined});
+    expect(renderFunction.mock.calls[2][0]).toEqual(renderFunction.mock.calls[1][0]);
+  });
 })

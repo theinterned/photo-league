@@ -11,12 +11,22 @@ export default class Request extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await response.json();
-    this.setState({ 
-      loading: false,
-      data
-    });
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const data = await response.json();
+      this.setState({ 
+        loading: false,
+        error: false,
+        data,
+      });
+    }
+    catch(error) {
+      this.setState({
+        loading: false,
+        data: undefined,
+        error,
+      })
+    }
   }
 
   render() {
