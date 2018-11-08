@@ -35,7 +35,7 @@ export default class Request extends Component {
   }
 
   render() {
-    const {loading, error, data} = this.state;
+    const {data, error, loading} = this.state;
     const {children} = this.props;
     return <> {
       typeof children === 'function' && children({data, error, loading})
