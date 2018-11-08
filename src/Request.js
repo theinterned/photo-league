@@ -5,9 +5,9 @@ export default class Request extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      data: undefined,
       error: false,
-      data: undefined
+      loading: true,
     }
   }
 
@@ -16,9 +16,9 @@ export default class Request extends Component {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      this.setState({loading: false, error: false, data});
+      this.setState({data, error: false, loading: false});
     } catch (error) {
-      this.setState({loading: false, data: undefined, error})
+      this.setState({data: undefined, error, loading: false,})
     }
   }
 
@@ -26,7 +26,7 @@ export default class Request extends Component {
     const {loading, error, data} = this.state;
     const {children} = this.props;
     return <> {
-      typeof children === 'function' && children({loading, error, data})
+      typeof children === 'function' && children({data, error, loading})
     } </>
   }
 }
