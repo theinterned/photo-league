@@ -74,6 +74,17 @@ describe('Request', () => {
     expect(fetch.mock.calls[1][0]).toEqual(url2);
   })
 
+  it('does not refetch when props.url does not change', () => {
+    const url = "https://league.test";
+    const wrapper = mount(
+      <Request url={url} />
+    );
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0][0]).toEqual(url);
+    wrapper.setProps({ url });
+    expect(fetch.mock.calls.length).toBe(1);
+  })
+
   it('handles case when children is empty or not a function', () => {
     expect(() => mount(
       <Request />
