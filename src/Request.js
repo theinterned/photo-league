@@ -12,8 +12,9 @@ export default class Request extends Component {
   }
 
   async componentDidMount() {
+    const {url} = this.props;
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const response = await fetch(url);
       const data = await response.json();
       this.setState({loading: false, error: false, data});
     } catch (error) {
@@ -23,15 +24,14 @@ export default class Request extends Component {
 
   render() {
     const {loading, error, data} = this.state;
-    const { children } = this.props;
+    const {children} = this.props;
     return <> {
-      typeof children === 'function' ?
-      children({loading, error, data}) :
-      children
+      typeof children === 'function' && children({loading, error, data})
     } </>
   }
 }
 
 Request.PropTypes = {
   children: PropTypes.func,
+  url: PropTypes.string.isRequired,
 }
