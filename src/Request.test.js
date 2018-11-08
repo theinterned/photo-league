@@ -51,4 +51,17 @@ describe('Request', () => {
     expect(renderFunction.mock.calls[1][0]).toEqual({loading: false, error, data: undefined});
     expect(renderFunction.mock.calls[2][0]).toEqual(renderFunction.mock.calls[1][0]);
   });
+
+  // it('fetches data from the url at props.url', () => {
+  //   const shallow = mount(
+  //     <Request />
+  //   );
+  //   expect(fetch.mock.call.length).toBe(1);
+  // });
+
+  it('handles case when children is empty or not a function', () => {
+    expect(() => mount(
+      <Request />
+    )).not.toThrow();
+  });
 })
