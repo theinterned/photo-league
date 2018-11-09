@@ -7,7 +7,7 @@ storiesOf('Page', module)
     <Page 
       title="my title"
       apiUrl="https://test.com/foo"
-    >Page contents</Page>
+    >{() => <p>Page contents</p>}</Page>
   ))
   .add('error', () => (
     <Error />

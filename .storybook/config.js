@@ -1,6 +1,14 @@
 import { configure } from '@storybook/react';
 import '../src/index.css';
 
+global.fetch = () => new Promise((resolve, reject) => {
+  resolve({
+    ok: true, 
+    json: () => ({data: 'data'}),
+  });
+});
+
+
 const req = require.context(
   '../src', // path where stories live
   true, // recursive?
