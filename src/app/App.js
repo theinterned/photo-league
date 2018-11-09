@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Router, Link} from "@reach/router";
-import Request from '../Request';
+import Request from 'shared/Request';
 import {UserList} from './users';
 import {AlbumList} from './albums';
 import {PhotoList} from './photos';
