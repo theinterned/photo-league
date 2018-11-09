@@ -1,7 +1,9 @@
 import React from 'react';
 import {Router, Link} from "@reach/router";
 import {UserList} from './users';
+import {AlbumList} from './albums';
 import {users, getUser} from './users/mocks';
+import {albums} from './albums/mocks';
 import {userAlbumListUrl} from './utils/urls';
 
 const Users = () => <>
@@ -11,7 +13,10 @@ const Users = () => <>
 
 const Albums = ({userId}) => {
   const {name} = getUser(userId);
-  return <h1>{name} - Albums</h1>;
+  return <>
+    <h1>{name} - Albums</h1>
+    <AlbumList albums={albums} /> 
+  </>;
 }
 
 const App = props => <> 
