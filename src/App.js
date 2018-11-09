@@ -8,13 +8,13 @@ import {PhotoList} from './photos';
 import {userAlbumListUrl, userAlbumUrl, usersApi, userAlbumsApi, albumPhotosApi} from './utils/urls';
 
 const Loading = () => <div>
-  <span role="img" aria-label="hourglass">⏳</span>
+  <span role="img" aria-label="hourglass">⏳</span>{" "}
   Loading ...</div>;
 
 const Error = error => <div>
-  <span role="img" aria-label="fire">🔥</span>
-  {error.message}
-  <span role="img" aria-label="fire">🔥</span>
+  <span role="img" aria-label="fire">🔥</span>{" "}
+  {error.message}{" "}
+  <span role="img" aria-label="fire">🔥</span>{" "}
 </div>
 
 const Page = ({ title, apiUrl, children}) => <>
