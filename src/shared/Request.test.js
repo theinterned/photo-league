@@ -12,7 +12,7 @@ describe('Request', () => {
 
   it('passes loading, error and data props to children', () => {
     shallow(
-      <Request>{renderFunction}</Request>
+      <Request url="foo">{renderFunction}</Request>
     );
     expect(renderFunction.mock.calls.length).toBe(1)
     expect(renderFunction.mock.calls[0][0]).toEqual({loading: true, error: false, data: undefined});
@@ -87,7 +87,7 @@ describe('Request', () => {
 
   it('handles case when children is empty or not a function', () => {
     expect(() => mount(
-      <Request />
+      <Request url="foo" />
     )).not.toThrow();
   });
 })
