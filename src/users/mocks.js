@@ -231,4 +231,5 @@ export const users = Object.freeze([
   }
 ]);
 
-export const getUser = id => users.find(u => u.id === id);
+const int = num => parseInt(num, 10);
+export const getUser = id => users.find(u => int(u.id) === int(id));

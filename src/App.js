@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Router, Link} from "@reach/router";
+import UserList from './users/List';
+import {users, getUser} from './users/mocks';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const Users = () => <>
+  <h1>Users</h1>
+  <UserList users={users} /> 
+</>;
+
+const Albums = ({userId}) => {
+  const {name} = getUser(userId);
+  return <h1>{name}
+    - Albums</h1>;
 }
+
+const App = props => <> 
+  <h1><Link to="/">App</Link></h1>
+  <Router>
+    <Users path="/"/>
+    <Albums path="users/:userId/albums"/>
+  </Router> 
+</>;
 
 export default App;
