@@ -10,5 +10,5 @@ const data = (count = 5, template = phrase) => Array.apply(null, {length: count}
 
 storiesOf('NavList', module)
   .add('default', () => (<>
-    <NavList>{data().map(d => <NavItem>{d}</NavItem>)}</NavList>
+    <NavList>{data().map(d => <NavItem to="">{d}</NavItem>)}</NavList>
   </>));
