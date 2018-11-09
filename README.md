@@ -11,7 +11,7 @@ Download and unzip the project.
 From the command line: 
 
 ```sh
-$ cd <directory of unzipped project>;
+$ cd <directory of unzipped project>
 $ yarn global add serve
 $ serve -s build
 ```
@@ -21,7 +21,7 @@ $ serve -s build
 From the command line: 
 
 ```sh
-$ cd <directory of unzipped project>;
+$ cd <directory of unzipped project>
 $ yarn
 $ yarn start
 ```
