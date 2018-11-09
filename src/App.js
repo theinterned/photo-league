@@ -3,10 +3,9 @@ import {Router, Link} from "@reach/router";
 import Request from './Request';
 import {UserList} from './users';
 import {AlbumList} from './albums';
-import {albums} from './albums/mocks';
 import {PhotoList} from './photos';
 import {photos} from './photos/mocks';
-import {userAlbumListUrl, userAlbumUrl, usersApi} from './utils/urls';
+import {userAlbumListUrl, userAlbumUrl, usersApi, userAlbumsApi} from './utils/urls';
 
 const Loading = () => <div>
   <span role="img" aria-label="hourglass">⏳</span>
@@ -19,7 +18,7 @@ const Error = error => <div>
 </div>
 
 const Users = () => <> 
-  <h1>👩🏽‍💼 Users</h1> 
+  <h1>👩🏽‍💼 Users:</h1> 
   <Request url={usersApi}>{
   ({data, error, loading}) => {
     console.log(data);
@@ -32,7 +31,14 @@ const Users = () => <>
 
 const Albums = ({userId}) => <> 
   <h1>📸 Albums:</h1> 
-  <AlbumList albums={albums} /> 
+  <Request url={userAlbumsApi(userId)}>{
+  ({data, error, loading}) => {
+    console.log(data);
+    if (loading) return <Loading/>;
+    if (error) return <Error error={error} />;
+    return <AlbumList albums={data} /> ;
+  }
+  }</Request>
 </>;
 
 const Album = ({userId, albumId}) => <> 
