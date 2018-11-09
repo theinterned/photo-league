@@ -4,8 +4,7 @@ import Request from './Request';
 import {UserList} from './users';
 import {AlbumList} from './albums';
 import {PhotoList} from './photos';
-import {photos} from './photos/mocks';
-import {userAlbumListUrl, userAlbumUrl, usersApi, userAlbumsApi} from './utils/urls';
+import {userAlbumListUrl, userAlbumUrl, usersApi, userAlbumsApi, albumPhotosApi} from './utils/urls';
 
 const Loading = () => <div>
   <span role="img" aria-label="hourglass">⏳</span>
@@ -36,14 +35,21 @@ const Albums = ({userId}) => <>
     console.log(data);
     if (loading) return <Loading/>;
     if (error) return <Error error={error} />;
-    return <AlbumList albums={data} /> ;
+    return <AlbumList albums={data} />;
   }
   }</Request>
 </>;
 
-const Album = ({userId, albumId}) => <> 
-  <h1>🖼 Photos:</h1> 
-  <PhotoList photos={photos} />
+const Album = ({albumId}) => <> 
+  <h1>🖼 Photos:</h1>
+  <Request url={albumPhotosApi(albumId)}>{
+  ({data, error, loading}) => {
+    console.log(data);
+    if (loading) return <Loading/>;
+    if (error) return <Error error={error} />;
+    return <PhotoList photos={data} />;
+  }
+  }</Request>
 </>;
 
 const App = props => <> 
