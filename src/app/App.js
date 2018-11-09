@@ -1,39 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {Router, Link} from "@reach/router";
-import Request from 'shared/Request';
-import {Title, Subtitle} from 'shared/Text';
+import {Router} from "@reach/router";
+import Page from 'shared/Page';
 import {UserList} from './users';
 import {AlbumList} from './albums';
 import {PhotoList} from './photos';
 import {userAlbumListUrl, userAlbumUrl, usersApi, userAlbumsApi, albumPhotosApi} from './utils/urls';
-
-const Loading = () => <div>
-  <span role="img" aria-label="hourglass">⏳</span>{" "}
-  Loading ...</div>;
-
-const Error = error => <div>
-  <span role="img" aria-label="fire">🔥</span>{" "}
-  {error.message}{" "}
-  <span role="img" aria-label="fire">🔥</span>{" "}
-</div>
-
-const Page = ({ title, apiUrl, children}) => <>
-  <Title px={3}>{title}</Title> 
-  <Request url={apiUrl}>{
-  ({data, error, loading}) => {
-    if (loading) return <Loading/>;
-    if (error) return <Error error={error} />;
-    return children(data);
-  }
-  }</Request>
-</>;
-
-Page.propTypes = {
-  title: PropTypes.node,
-  apiUrl: PropTypes.string.isRequired,
-  children: PropTypes.func.isRequired,
-}
 
 const Users = () => (
   <Page 
@@ -57,7 +28,6 @@ const Album = ({albumId}) => (
 );
 
 const App = props => <> 
-  <Subtitle><Link to="/">Home</Link></Subtitle> 
   <Router> 
     <Users path="/"/> 
     <Albums path = {userAlbumListUrl} />

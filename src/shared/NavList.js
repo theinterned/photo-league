@@ -11,6 +11,7 @@ export const NavList = styled(Box)`
 NavList.defaultProps = {
   as: 'ul',
   m: 0,
+  mt: -3,
   p: 0,
   width: 1
 }
