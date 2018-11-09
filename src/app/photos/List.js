@@ -1,22 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import {Flex, Box} from 'rebass';
 
-const Item = ({title, thumbnailUrl}) => <li>
-  <figure>
-    <img src={thumbnailUrl}/>
-    <figcaption>{title}</figcaption>
-  </figure>
-</li>;
+const Figure = styled('figure')`
+  padding: 0;
+  margin: 0;
+`;
 
-Item.propTypes = {
+const Figcaption = styled('figcaption')`
+  max-width: 150px;
+`;
+
+const Picture = ({title, thumbnailUrl}) => <Figure>
+  <img src={thumbnailUrl}/>
+  <Figcaption>{title}</Figcaption>
+</Figure>;
+
+Picture.propTypes = {
   thumbnailUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
 
-const List = ({photos}) => <ul>{photos.map(({thumbnailUrl, id, title}) => <Item title={title} thumbnailUrl={thumbnailUrl} key={`photo_${id}`}/>)}</ul>;
+const Item = styled(Box)``;
+
+Item.defaultProps = {
+  as: 'li',
+  width: [1/2, 1/3, 1/5],
+  p: 3
+}
+
+const List = styled(Flex)`
+  text-indent: 0;
+  list-style-type: none;
+  flex-wrap: wrap;
+`;
+
+List.defaultProps = {
+  as: 'ul',
+  m: 0,
+  p: 0,
+  width: 1
+}
+
+
+const PhotoList = ({photos}) => <List>{photos.map(({thumbnailUrl, id, title}) => 
+  <Item><Picture title={title} thumbnailUrl={thumbnailUrl} key={`photo_${id}`}/></Item>
+)}</List>;
 
 List.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.shape(Item.propTypes))
 };
 
-export default List;
+export default PhotoList;

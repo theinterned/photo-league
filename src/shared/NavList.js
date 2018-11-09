@@ -6,7 +6,6 @@ import {Link} from "@reach/router";
 export const NavList = styled(Box)`
    text-indent: 0;
    list-style-type: none;
-   flex-wrap: wrap;
 `;
 
 NavList.defaultProps = {

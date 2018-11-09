@@ -19,7 +19,7 @@ const Error = error => <div>
 </div>
 
 const Page = ({ title, apiUrl, children}) => <>
-  <Title>{title}</Title> 
+  <Title px={3}>{title}</Title> 
   <Request url={apiUrl}>{
   ({data, error, loading}) => {
     if (loading) return <Loading/>;
@@ -51,7 +51,7 @@ const Albums = ({userId}) => (
 
 const Album = ({albumId}) => (
   <Page 
-    title={<><span role="img" aria-label="framed picture">🖼</span> Albums:</>} 
+    title={<><span role="img" aria-label="framed picture">🖼</span> Photos:</>} 
     apiUrl={albumPhotosApi(albumId)}
   >{data => <PhotoList photos={data} />}</Page>
 );
