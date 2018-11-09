@@ -35,11 +35,26 @@ Page.propTypes = {
   children: PropTypes.func.isRequired,
 }
 
-const Users = () => <Page title={<><span role="img" aria-label="woman">👩🏽‍💼</span> Users:</>} apiUrl={usersApi}>{data => <UserList users={data}/>}</Page>;
+const Users = () => (
+  <Page 
+    title={<><span role="img" aria-label="woman">👩🏽‍💼</span> Users:</>} 
+    apiUrl={usersApi}
+  >{data => <UserList users={data}/>}</Page>
+);
 
-const Albums = ({userId}) => <Page title={<><span role="img" aria-label="camera">📸</span> Albums:</>} apiUrl={userAlbumsApi(userId)}>{data => <AlbumList albums={data} />}</Page>;
+const Albums = ({userId}) => (
+  <Page 
+    title={<><span role="img" aria-label="camera">📸</span> Albums:</>} 
+    apiUrl={userAlbumsApi(userId)}
+  >{data => <AlbumList albums={data} />}</Page>
+);
 
-const Album = ({albumId}) => <Page title={<><span role="img" aria-label="framed picture">🖼</span> Albums:</>} apiUrl={albumPhotosApi(albumId)}>{data => <PhotoList photos={data} />}</Page>;
+const Album = ({albumId}) => (
+  <Page 
+    title={<><span role="img" aria-label="framed picture">🖼</span> Albums:</>} 
+    apiUrl={albumPhotosApi(albumId)}
+  >{data => <PhotoList photos={data} />}</Page>
+);
 
 const App = props => <> 
   <h1><Link to="/">Home</Link></h1> 
