@@ -1,3 +1,24 @@
+# Photo league
+
+Ned Schwartz's solution to the challenge. Thanks for the fun time!
+
+## TLDR: to run the project:
+
+1. Download and unzip the project. 
+1. From the command line: 
+
+```sh
+$ cd <directory of unzipped project>;
+$ yarn
+$ yarn start
+```
+
+A browser should automatically open and navigate to [http://localhost:3000](http://localhost:3000). If that doesn't happen. Please do go ahead and open that url in your favourite browser!
+
+Read on for more details.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
