@@ -45,7 +45,7 @@ List.defaultProps = {
 
 
 const PhotoList = ({photos}) => <List>{photos.map(({thumbnailUrl, id, title}) => 
-  <Item><Picture title={title} thumbnailUrl={thumbnailUrl} key={`photo_${id}`}/></Item>
+  <Item key={`photo_${id}`}><Picture title={title} thumbnailUrl={thumbnailUrl} /></Item>
 )}</List>;
 
 List.propTypes = {
