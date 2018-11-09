@@ -1,8 +1,8 @@
 import React from 'react';
 import {Router, Link} from "@reach/router";
-import UserList from './users/List';
+import {UserList} from './users';
 import {users, getUser} from './users/mocks';
-import {userAlbumsUrl} from './utils/urls';
+import {userAlbumListUrl} from './utils/urls';
 
 const Users = () => <>
   <h1>Users</h1>
@@ -18,7 +18,7 @@ const App = props => <>
   <h1><Link to="/">App</Link></h1>
   <Router>
     <Users path="/"/>
-    <Albums path={userAlbumsUrl}/>
+    <Albums path={userAlbumListUrl}/>
   </Router> 
 </>;
 

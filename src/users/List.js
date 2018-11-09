@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "@reach/router"
-import {makeUserAlbumsUrl} from '../utils/urls';
+import {makeUserAlbumListUrl} from '../utils/urls';
 
 const Item = ({name, id}) => <li>
-  <Link to={makeUserAlbumsUrl(id)}>{name}</Link>
+  <Link to={makeUserAlbumListUrl(id)}>{name}</Link>
 </li>;
 
 Item.propTypes = {
