@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from "@reach/router"
+import {NavList, NavItem} from 'shared/NavList';
 
-const Item = ({title, id}) => <li>
-  <Link to={`${id}`}>{title}</Link>
-</li>;
-
-Item.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired
-};
-
-const List = ({albums}) => <ul>{albums.map(({id, title}) => <Item title={title} id={id} key={`albums_${id}`}/>)}</ul>;
+const List = ({albums}) => <NavList>{albums.map(({id, title}) => 
+  <NavItem to={`${id}`} key={`album_${id}`}>{title}</NavItem>
+)}</NavList>;
 
 List.propTypes = {
-  albums: PropTypes.arrayOf(PropTypes.shape(Item.propTypes))
+  albums: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  }))
 };
 
 export default List;
