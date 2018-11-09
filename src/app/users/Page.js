@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from 'shared/Page';
-import {usersApi} from '../utils/urls';
+import {usersApi} from 'app/urls';
 import List from './List';
 
 const UsersPage = () => (

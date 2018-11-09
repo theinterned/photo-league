@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavList, NavItem} from 'shared/NavList';
-import {makeUserAlbumListUrl} from '../utils/urls';
+import {makeUserAlbumListUrl} from 'app/urls';
 
 const List = ({users}) => <NavList>{users.map(({id, name}) => 
   <NavItem to={makeUserAlbumListUrl(id)} key={`user_${id}`}>{name}</NavItem>

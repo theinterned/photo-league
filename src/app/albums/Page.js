@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from 'shared/Page';
-import {userAlbumsApi} from '../utils/urls';
+import {userAlbumsApi} from 'app/urls';
 import List from './List';
 
 const AlbumsPage = ({userId}) => (
