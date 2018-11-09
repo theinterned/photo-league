@@ -13,7 +13,7 @@ const Figcaption = styled('figcaption')`
 `;
 
 const Picture = ({title, thumbnailUrl}) => <Figure>
-  <img src={thumbnailUrl}/>
+  <img src={thumbnailUrl} alt={`${title}`}/>
   <Figcaption>{title}</Figcaption>
 </Figure>;
 
