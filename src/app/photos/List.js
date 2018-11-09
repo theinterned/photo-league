@@ -26,7 +26,6 @@ const Item = styled(Box)``;
 
 Item.defaultProps = {
   as: 'li',
-  width: [1/2, 1/3, 1/5],
   p: 3
 }
 
@@ -34,6 +33,7 @@ const List = styled(Flex)`
   text-indent: 0;
   list-style-type: none;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 List.defaultProps = {
