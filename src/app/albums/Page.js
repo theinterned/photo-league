@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from '@reach/router';
+import Link from 'shared/Link';
 import Page from 'shared/Page';
 import {userAlbumsApi} from 'app/urls';
 import List from './List';
