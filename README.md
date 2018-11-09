@@ -18,7 +18,7 @@ $ serve -s build
 
 ## Run in dev mode:
 
-1. From the command line: 
+From the command line: 
 
 ```sh
 $ cd <directory of unzipped project>;
