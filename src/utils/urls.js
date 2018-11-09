@@ -1,4 +1,5 @@
-export const  usersRoute = '/';
+export const  usersUrl = '/';
+export const usersApi = 'https://jsonplaceholder.typicode.com/users';
 
 export const  makeUserAlbumListUrl = userId => `/users/${userId}/albums`;
 export const  userAlbumListUrl = makeUserAlbumListUrl(':userId');
