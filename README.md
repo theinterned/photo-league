@@ -4,7 +4,20 @@ Ned Schwartz's solution to the challenge. Thanks for the fun time!
 
 ## TLDR: to run the project:
 
-1. Download and unzip the project. 
+Download and unzip the project. 
+
+## Run the static build
+
+From the command line: 
+
+```sh
+$ cd <directory of unzipped project>;
+$ yarn global add serve
+$ serve -s build
+```
+
+## Run in dev mode:
+
 1. From the command line: 
 
 ```sh
