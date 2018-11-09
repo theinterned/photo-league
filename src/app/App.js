@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Router, Link} from "@reach/router";
 import Request from 'shared/Request';
+import {Title, Subtitle} from 'shared/Text';
 import {UserList} from './users';
 import {AlbumList} from './albums';
 import {PhotoList} from './photos';
@@ -18,7 +19,7 @@ const Error = error => <div>
 </div>
 
 const Page = ({ title, apiUrl, children}) => <>
-  <h1>{title}</h1> 
+  <Title>{title}</Title> 
   <Request url={apiUrl}>{
   ({data, error, loading}) => {
     if (loading) return <Loading/>;
@@ -56,7 +57,7 @@ const Album = ({albumId}) => (
 );
 
 const App = props => <> 
-  <h1><Link to="/">Home</Link></h1> 
+  <Subtitle><Link to="/">Home</Link></Subtitle> 
   <Router> 
     <Users path="/"/> 
     <Albums path = {userAlbumListUrl} />
