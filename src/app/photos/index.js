@@ -1,1 +1,1 @@
-export { default as PhotoList } from './List';
+export { default } from './Page';

@@ -38,8 +38,6 @@ Main.defaultProps = {
   py: 3
 }
 
-// const 
-
 const Page = ({ title, apiUrl, children}) => <Layout>
   <Header>
     <Title px={3}>{title}</Title> 

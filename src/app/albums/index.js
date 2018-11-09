@@ -1,1 +1,1 @@
-export { default as AlbumList } from './List';
+export { default } from './Page';
